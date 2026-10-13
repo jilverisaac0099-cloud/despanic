@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pilons_origin', function (Blueprint $table) {
+        Schema::create('pilon_origins', function (Blueprint $table) {
             $table->id();
             $table->decimal('pounds_contributed', 10, 2);
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pilons_origin');
+        Schema::dropIfExists('pilon_origins');
     }
 };
