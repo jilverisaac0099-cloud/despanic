@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drawers_entry', function (Blueprint $table) {
+        Schema::create('drawers_entrys', function (Blueprint $table) {
             $table->id();
             $table->string('number', 50);
             $table->decimal('weight_humedity', 10, 2);
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drawers_entry');
+        Schema::dropIfExists('drawers_entrys');
     }
 };
