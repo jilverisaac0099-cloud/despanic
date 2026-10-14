@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('bale_packagings', function (Blueprint $table) {
             $table->id();
+            $table->string('bale_number', 50);
+            $table->date('packing_date');
+            $table->string('class_name', 100);
+            $table->string('provenance', 100);
+            $table->string('pylon_origin', 100)->nullable();
+            $table->decimal('net_weight', 10, 2);
+            $table->string('status_bale', 50);
+            $table->date('registration_date');
+
+            $table->unsignedBigInteger("bale_drying_id");
+        $table->foreign("bale_drying_id")->references("id")->on("bale_dryings")->onDelete("cascade")->onUpdate("cascade");
+
             $table->timestamps();
         });
     }
