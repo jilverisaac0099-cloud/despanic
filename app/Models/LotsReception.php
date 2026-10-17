@@ -18,11 +18,11 @@ class LotsReception extends Model
 
     public function lots_details()
     {
-        return $this->hasMany(LotsDetail::class, "lots_reception_id");
+        return $this->hasMany(LotsDetail::class);
     }
 
     public function pilon_origins()
     {
-        return $this->hasMany(PilonOrigin::class, "lot_reception_id");
+        return $this->hasMany(PilonOrigin::class);
     }
 }
