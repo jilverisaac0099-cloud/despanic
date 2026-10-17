@@ -16,11 +16,11 @@ class DestemmingDrawer extends Model
 
     public function pilon()
     {
-        return $this->belongsTo(Pilon::class, "pilon_id");
+        return $this->belongsTo(Pilon::class);
     }
 
     public function tobacco_class()
     {
-        return $this->belongsTo(TobaccoClass::class, "tobacco_classes_id");
+        return $this->belongsTo(TobaccoClass::class);
     }
 }
