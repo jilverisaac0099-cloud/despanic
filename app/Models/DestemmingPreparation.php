@@ -17,4 +17,9 @@ class DestemmingPreparation extends Model
     {
         return $this->belongsTo(Pilon::class);
     }
+public function DestemmingDelivery ()
+    {
+        return $this->hasMany(DestemmingDelivery::class);
+    }
 }
+
