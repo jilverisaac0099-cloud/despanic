@@ -17,5 +17,15 @@ class BaleDrying extends Model
     {
         return $this->belongsTo(TobaccoClass::class, 'tobacco_classes_id');
     }
+
+    public function bale_compositions()
+    {
+        return $this->hasMany(BaleComposition::class, 'bale_drying_id');
+    }
+
+    public function bale_packagings()
+    {
+        return $this->hasMany(BalePackaging::class, 'bale_drying_id');
+    }
 }
 
