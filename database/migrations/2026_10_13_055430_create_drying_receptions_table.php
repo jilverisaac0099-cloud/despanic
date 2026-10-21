@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drying_receptions_tabl', function (Blueprint $table) {
+        Schema::create('drying_receptions', function (Blueprint $table) {
             $table->id();
             $table->date('date_income');
             $table->decimal('weigth_gold', 10, 2);
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drying_receptions_tabl');
+        Schema::dropIfExists('drying_receptions');
     }
 };

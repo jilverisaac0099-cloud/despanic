@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destemming_clousure', function (Blueprint $table) {
+        Schema::create('destemming_clousures', function (Blueprint $table) {
             $table->id();
             $table->decimal('peso_gold', 10, 2);
             $table->decimal('total_sting', 10, 2);
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destemming_clousure');
+        Schema::dropIfExists('destemming_clousures');
     }
 };
