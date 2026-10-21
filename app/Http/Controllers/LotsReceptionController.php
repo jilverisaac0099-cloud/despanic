@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\LotReception;    
-use App\Http\Requests\LotReceptionRequest;
+use App\Models\LotsReception;
+use App\Http\Requests\LotsReceptionRequest;
 
-class LotReceptionController extends Controller
+class LotsReceptionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $lotsReceptions = LotReception::orderByDesc("id")->get();
-        return view("lot_receptions.index", compact("lotsReceptions"));
+        $lotsReceptions = LotsReception::orderByDesc("id")->get();
+        return view("lots_receptions.index", compact("lotsReceptions"));
     }
 
     /**
@@ -22,16 +22,16 @@ class LotReceptionController extends Controller
      */
     public function create()
     {
-        $lotReception = new LotReception();
-        return view("lot_receptions.create", compact("lotReception"));
+        $lotReception = new LotsReception();
+        return view("lots_receptions.create", compact("lotReception"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LotReceptionRequest $request)
+    public function store(LotsReceptionRequest $request)
     {
-        LotReception::create($request->validated());
+        LotsReception::create($request->validated());
         return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha creado correctamente.");
     }
 
@@ -40,7 +40,7 @@ class LotReceptionController extends Controller
      */
     public function show(string $id)
     {
-        $lotReception = LotReception::findOrFail($id);
+        $lotReception = LotsReception::findOrFail($id);
         return view("lots_reception.show", compact("lotReception"));
     }
 
@@ -49,14 +49,14 @@ class LotReceptionController extends Controller
      */
     public function edit(string $id)
     {
-        $lotReception = LotReception::findOrFail($id);
+        $lotReception = LotsReception::findOrFail($id);
         return view("lots_reception.edit", compact("lotReception"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(LotReceptionRequest $request, LotReception $lotReception)
+    public function update(LotsReceptionRequest $request, LotsReception $lotReception)
     {
         $lotReception->update($request->validated());
         return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha actualizado correctamente.");
@@ -67,7 +67,7 @@ class LotReceptionController extends Controller
      */
     public function destroy(string $id)
     {
-        $lotReception = LotReception::findOrFail($id);
+        $lotReception = LotsReception::findOrFail($id);
         $lotReception->delete();
         return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha eliminado correctamente.");
     }
