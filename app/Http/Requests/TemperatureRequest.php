@@ -32,7 +32,7 @@ class TemperatureRequest extends FormRequest
     public function messages():array
     {
         return[
-            
+
             'pilon_id' => 'required|exists:pilons,id',
 
             'pilon_id.required'=>'El campo es requerido',
@@ -48,3 +48,4 @@ class TemperatureRequest extends FormRequest
         ];
     }
 }
+
