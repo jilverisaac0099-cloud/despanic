@@ -8,7 +8,7 @@ class TobaccoClass extends Model
 {
     protected $fillable = [
         'code',
-        'nombre',
+        'name',
         'type',
         'quality_status',
         'size'

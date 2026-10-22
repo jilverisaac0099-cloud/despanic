@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tobacco_classes', function (Blueprint $table) {
             $table->id();
             $table->string('code', 50)->unique();
-            $table->string('nombre', 100);
+            $table->string('name', 100);
             $table->string('type', 50);
             $table->string('quality_status', 50);
             $table->string('size', 50);
