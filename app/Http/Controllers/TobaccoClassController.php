@@ -24,7 +24,7 @@ class TobaccoClassController extends Controller
     {
         $tobaccoClass = new TobaccoClass();
         
-        return view("tobacco_classes.create", compact("tobaccoClass"));
+        return view("tobacco_classes.create", compact("tobaccoClasses"));
     }
 
     /**
