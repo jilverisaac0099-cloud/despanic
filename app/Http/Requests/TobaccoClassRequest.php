@@ -24,7 +24,7 @@ class TobaccoClassRequest extends FormRequest
     {
         return [
             'code'=>'string|required|min:3|max:50|unique:tobacco_classes,code,' . $this->route('tobacco_class'),
-            'nombre'=>'string|required|min:3|max:100',
+            'name'=>'string|required|min:3|max:100',
             'type'=>'string|required|min:3|max:50',
             'quality_status'=>'string|required|min:3|max:50',
             'size'=>'string|required|min:1|max:50',
@@ -41,10 +41,10 @@ class TobaccoClassRequest extends FormRequest
             'code.max'=>'El maximo de caracteres es 50',
             'code.unique'=>'El codigo debe ser unico',
 
-            'nombre.string'=>'El nombre solo permite caracteres',
-            'nombre.required'=>'El campo es requerido',
-            'nombre.min'=>'El minimo de caracteres es 3',
-            'nombre.max'=>'El maximo de caracteres es 100',
+            'name.string'=>'El nombre solo permite caracteres',
+            'name.required'=>'El campo es requerido',
+            'name.min'=>'El minimo de caracteres es 3',
+            'name.max'=>'El maximo de caracteres es 100',
 
             'type.string'=>'El tipo solo permite caracteres',
             'type.required'=>'El campo es requerido',
@@ -64,3 +64,4 @@ class TobaccoClassRequest extends FormRequest
         ];
     }
 }
+
