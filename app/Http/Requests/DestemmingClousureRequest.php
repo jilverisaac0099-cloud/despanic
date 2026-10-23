@@ -24,9 +24,9 @@ class DestemmingClousureRequest extends FormRequest
     {
         return [
             'pilon_id'=>"required",
-            'peso_gold'=>"numeric|required||min:0|max:5000|decimal:0,2",
-            'total_sting'=>"numeric|required||min:0|max:5000|decimal:0,2",
-            'total_vein'=>"numeric|required||min:0|max:5000|decimal:0,2",
+            'peso_gold'=>"decimal:0,2|required||min:1|max:10",
+            'total_sting'=>"decimal:0,2|required||min:1|max:10",
+            'total_vein'=>"decimal:0,2|required||min:1|max:10",
             'date_clousure'=>"date|required",
         ];
     }
@@ -34,27 +34,24 @@ class DestemmingClousureRequest extends FormRequest
     public function messages():array
     {
         return[
-            
+
             'pilon_id' => 'required|exists:pilons,id',
             'pilon_id.required'=>'El campo es requerido',
 
-            'peso_gold.numeric'=>'El campo peso oro solo permite numeros',
-            'peso_gold.required'=>'El campo es requerido',
-            'peso_gold.min'=>'El valor minimo permitido es 0',
-            'peso_gold.max'=>'El valor maximo permitido es 5000',
             'peso_gold.decimal'=>'El campo peso oro solo permite un máximo de 2 decimales',
+            'peso_gold.required'=>'El campo es requerido',
+            'peso_gold.min'=>'El minimo permitido es 1',
+            'peso_gold.max'=>'El maximo permitido es 10',
 
-            'total_sting.numeric'=>'El campo total picadura solo permite numeros',
-            'total_sting.required'=>'El campo es requerido',
-            'total_sting.min'=>'El valor minimo permitido es 0',
-            'total_sting.max'=>'El valor maximo permitido es 5000',
             'total_sting.decimal'=>'El campo total picadura solo permite un máximo de 2 decimales',
+            'total_sting.required'=>'El campo es requerido',
+            'total_sting.min'=>'El minimo permitido es 1',
+            'total_sting.max'=>'El maximo permitido es 10',
 
-            'total_vein.numeric'=>'El campo total vena solo permite numeros',
-            'total_vein.required'=>'El campo es requerido',
-            'total_vein.min'=>'El valor minimo permitido es 0',
-            'total_vein.max'=>'El valor maximo permitido es 5000',
             'total_vein.decimal'=>'El campo total vena solo permite un máximo de 2 decimales',
+            'total_vein.required'=>'El campo es requerido',
+            'total_vein.min'=>'El minimo permitido es 1',
+            'total_vein.max'=>'El maximo permitido es 10',
 
             'date_clousure.date'=>'El campo solo permite fecha',
             'date_clousure.required'=>'El campo es requerido',
