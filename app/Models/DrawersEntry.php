@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DrawerEntry extends Model
+class DrawersEntry extends Model
 {
     protected $table = 'drawers_entry';
 
