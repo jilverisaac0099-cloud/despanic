@@ -14,7 +14,7 @@ class LotsReceptionController extends Controller
     public function index()
     {
         $lotsReceptions = LotsReception::orderByDesc("id")->get();
-        return view("lots_receptions.index", compact("lotsReceptions"));
+        return view("lots_reception.index", compact("lotsReceptions"));
     }
 
     /**
@@ -23,7 +23,7 @@ class LotsReceptionController extends Controller
     public function create()
     {
         $lotReception = new LotsReception();
-        return view("lots_receptions.create", compact("lotReception"));
+        return view("lots_reception.create", compact("lotReception"));
     }
 
     /**
@@ -56,8 +56,9 @@ class LotsReceptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(LotsReceptionRequest $request, LotsReception $lotReception)
+    public function update(LotsReceptionRequest $request, string $id)
     {
+        $lotReception = LotsReception::findOrFail($id);
         $lotReception->update($request->validated());
         return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha actualizado correctamente.");
     }
