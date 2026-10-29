@@ -44,9 +44,9 @@ class LotsDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LotsDetail $lot_detail)
+    public function show(string $id)
     {
-        $lot_detail = LotsDetail::with('lots_reception')->findOrFail($lot_detail->id);
+        $lot_detail = LotsDetail::with('lots_reception')->findOrFail($id);
         return view('lots_details.show', compact('lot_detail'));
     }
     

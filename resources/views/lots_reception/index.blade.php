@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
                 {{ __('Recepción de Lotes') }}
             </h2>
-            <a href="{{ route('lots_reception.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-lg shadow-indigo-500/30">
+            <a href="{{ route('lots_receptions.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-lg shadow-indigo-500/30">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 Nueva Recepción
             </a>
@@ -37,13 +37,13 @@
                                     <td class="py-4 px-6 text-sm text-gray-600 dark:text-gray-300">{{ number_format($lotReception->pounds_received, 2) }} Lbs</td>
                                     <td class="py-4 px-6 text-sm text-gray-600 dark:text-gray-300">{{ Str::limit($lotReception->remarks ?? 'Sin observaciones', 40) }}</td>
                                     <td class="py-4 px-6 text-sm text-right space-x-2">
-                                        <a href="{{ route('lots_reception.show', $lotReception) }}" class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                        <a href="{{ route('lots_receptions.show', $lotReception) }}" class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                                             Ver
                                         </a>
-                                        <a href="{{ route('lots_reception.edit', $lotReception) }}" class="inline-flex items-center px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+                                        <a href="{{ route('lots_receptions.edit', $lotReception) }}" class="inline-flex items-center px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
                                             Editar
                                         </a>
-                                        <form action="{{ route('lots_reception.destroy', $lotReception) }}" method="POST" class="inline" id="form-delete-{{ $lotReception->id }}">
+                                        <form action="{{ route('lots_receptions.destroy', $lotReception) }}" method="POST" class="inline" id="form-delete-{{ $lotReception->id }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" onclick="confirmarEliminacion({{ $lotReception->id }})" class="inline-flex items-center px-3 py-1.5 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors">
