@@ -23,8 +23,7 @@ class TobaccoClassController extends Controller
     public function create()
     {
         $tobaccoClass = new TobaccoClass();
-        
-        return view("tobacco_classes.create", compact("tobaccoClasses"));
+        return view("tobacco_classes.create", compact("tobaccoClass"));
     }
 
     /**
@@ -33,7 +32,7 @@ class TobaccoClassController extends Controller
     public function store(TobaccoClassRequest $request)
     {
         TobaccoClass::create($request->validated());
-        return redirect()->route("tobacco-classes.index")->with("success", "La clase de tabaco se ha creado correctamente.");
+        return redirect()->route("tobacco_classes.index")->with("success", "La clase de tabaco se ha registrado correctamente.");
     }
 
     /**
@@ -57,12 +56,13 @@ class TobaccoClassController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TobaccoClassRequest $request, TobaccoClass $tobaccoClass)
+    public function update(TobaccoClassRequest $request, string $id)
     {
+        $tobaccoClass = TobaccoClass::findOrFail($id);
         $tobaccoClass->update($request->validated());
-        return redirect()->route("tobacco-classes.index")->with("success", "La clase de tabaco se ha actualizado correctamente.");
+        return redirect()->route("tobacco_classes.index")->with("success", "La clase de tabaco se ha actualizado correctamente.");
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
@@ -70,6 +70,6 @@ class TobaccoClassController extends Controller
     {
         $tobaccoClass = TobaccoClass::findOrFail($id);
         $tobaccoClass->delete();
-        return redirect()->route("tobacco-classes.index")->with("success", "La clase de tabaco se ha eliminado correctamente.");
+        return redirect()->route("tobacco_classes.index")->with("success", "La clase de tabaco se ha eliminado correctamente.");      
     }
 }
