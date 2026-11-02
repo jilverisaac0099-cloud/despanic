@@ -19,37 +19,37 @@
                         <thead>
                             <tr class="bg-gray-50/50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider w-16">#</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Número de Corte</th>
+                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Recepción de Lote</th>
+                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">No. de Corte</th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Libras</th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Calidad</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Recepción de Lote</th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-right">Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
-                            @forelse ($lots_details as $lot_detail)
+                            @forelse ($lots_details as$lot_detail)
                                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-mono text-gray-400 dark:text-gray-500">{{ $lot_detail->id }}</span>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $lot_detail->cut_number ?? 'Sin número de corte' }}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $lot_detail->pounds ?? 'Sin libras' }}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $lot_detail->quality ?? 'Sin calidad' }}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
                                             {{ $lot_detail->lots_reception->lot_number ?? $lot_detail->lots_reception->code ?? ('Recepción #' . $lot_detail->lots_reception_id) }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                                            {{ $lot_detail->cut_number }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600 dark:text-gray-300">
+                                            {{ number_format($lot_detail->pounds, 2) }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                                            {{ $lot_detail->quality }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
@@ -83,12 +83,6 @@
                         </tbody>
                     </table>
                 </div>
-                
-                @if(isset($lots_details) && method_exists($lots_details, 'hasPages') && $lots_details->hasPages())
-                    <div class="px-6 py-4 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50">
-                        {{ $lots_details->links() }}
-                    </div>
-                @endif
             </div>
         </div>
     </div>
@@ -106,9 +100,7 @@
                 cancelButtonText: 'Cancelar',
                 background: '#1e293b',
                 color: '#ffffff',
-                customClass: {
-                    popup: 'rounded-2xl border border-gray-700'
-                }
+                customClass: { popup: 'rounded-2xl border border-gray-700' }
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('form-delete-' + id).submit();
