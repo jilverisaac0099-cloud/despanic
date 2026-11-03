@@ -39,7 +39,7 @@ class DestemmingDrawerController extends Controller
     public function store(DestemmingDrawerRequest $request)
     {
         DestemmingDrawer::create($request->validated());
-        return redirect()->route('destemming_drawers.index')->with('success', 'Gaveta de despalillo creada correctamente.');
+        return redirect()->route('destemming_drawers.index')->with('success', 'Cajon de despalillo creado correctamente.');
     }
 
     /**
@@ -69,7 +69,7 @@ class DestemmingDrawerController extends Controller
     {
         $destemming_drawer = DestemmingDrawer::with(['pilon', 'tobacco_class'])->findOrFail($id);
         $destemming_drawer->update($request->validated());
-        return redirect()->route('destemming_drawers.index')->with('success', 'Gaveta de despalillo actualizada correctamente.');
+        return redirect()->route('destemming_drawers.index')->with('success', 'Cajon de despalillo actualizado correctamente.');
     }
     
     /**
@@ -79,6 +79,6 @@ class DestemmingDrawerController extends Controller
     {
         $destemming_drawer = DestemmingDrawer::with(['pilon', 'tobacco_class'])->findOrFail($id);
         $destemming_drawer->delete();
-        return redirect()->route('destemming_drawers.index')->with('success', 'Gaveta de despalillo eliminada correctamente.');
+        return redirect()->route('destemming_drawers.index')->with('success', 'Cajon de despalillo eliminado correctamente.');
     }
 }
