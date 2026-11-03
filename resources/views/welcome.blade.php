@@ -1,104 +1,119 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gray-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despánic - Trazabilidad y Gestión de Tabaco</title>
+    <!-- Vite CSS / Tailwind -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="h-full text-gray-100 font-sans antialiased selection:bg-emerald-500 selection:text-white flex flex-col justify-between">
 
-@section('content')
-<div class="relative min-h-[85vh] flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl my-4">
-    <!-- Imagen real de plantación de tabaco con alta calidad y overlay degradado -->
-    <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1920&auto=format&fit=crop" alt="Plantación de Tabaco" class="w-full h-full object-cover transform scale-105 transition-transform duration-1000 hover:scale-100">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-emerald-950/40 backdrop-blur-[2px]"></div>
-    </div>
-
-    <!-- Contenido Central con Animaciones -->
-    <div class="relative z-10 px-8 py-16 sm:px-16 max-w-5xl mx-auto text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12 w-full">
-        
-        <div class="space-y-6 max-w-2xl">
-            <!-- Badge Animado -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-wider text-emerald-300 bg-emerald-900/80 border border-emerald-500/40 uppercase shadow-lg backdrop-blur-md">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                Excelencia y Tradición Tabacalera
+    <!-- Navbar Superior -->
+    <header class="border-b border-gray-800 bg-gray-900/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Logo / Nombre -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-600 p-2 rounded-lg text-white font-bold flex items-center justify-center shadow-lg shadow-emerald-900/40">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-black tracking-wider text-white">Despánic</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow-md">
-                Tabacalera <span class="text-emerald-400 bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">San Andrés</span>
-            </h1>
-
-            <p class="text-gray-200 text-lg sm:text-xl font-light leading-relaxed drop-shadow">
-                Plataforma inteligente para la trazabilidad total: control absoluto desde los lotes en campo, hornos de secado y despalillo, hasta la fermentación perfecta en pilones.
-            </p>
-
-            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
-                <a href="{{ route('lots_receptions.index') }}" class="group relative inline-flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl shadow-xl shadow-emerald-900/50 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 text-decoration-none">
-                    <span>Iniciar Recepción de Lotes</span>
-                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            <!-- Accesos directos basados en tus recursos -->
+            <div class="flex items-center space-x-4">
+                <a href="{{ route('lots_receptions.index') }}" class="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-emerald-400 transition-colors">
+                    Recepción de Lotes
                 </a>
-                <a href="{{ route('pilons.index') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border border-white/20 backdrop-blur-md shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-decoration-none">
-                    Ver Pilones
+                <a href="{{ route('pilons.index') }}" class="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-emerald-400 transition-colors">
+                    Pilones
+                </a>
+                <a href="{{ route('lots_receptions.create') }}" class="px-4 py-2 text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-all shadow-md shadow-emerald-900/30">
+                    Nueva Recepción
                 </a>
             </div>
         </div>
+    </header>
 
-        <!-- Panel de Estadísticas Animado -->
-        <div class="shrink-0 bg-gray-900/80 backdrop-blur-xl p-8 rounded-3xl border border-emerald-500/30 shadow-2xl flex flex-col gap-6 text-center w-full sm:w-80 transform transition-all duration-500 hover:scale-105">
-            <div class="border-b border-gray-700/60 pb-4">
-                <span class="block text-4xl font-black text-emerald-400 drop-shadow">22</span>
-                <span class="text-xs font-semibold text-gray-300 uppercase tracking-widest">Módulos CRUD Activos</span>
+    <!-- Contenido Principal -->
+    <main class="flex-grow flex items-center relative overflow-hidden py-12">
+        <!-- Fondo decorativo sutil -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Texto e Introducción (Columna Izquierda) -->
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">
+                    EXCELENCIA Y TRADICIÓN TABACALERA
+                </span>
+                
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Tabacalera <span class="text-emerald-500">Despánic</span>
+                </h1>
+                
+                <p class="text-lg text-gray-300 max-w-2xl leading-relaxed">
+                    Plataforma inteligente para la trazabilidad total: control absoluto desde los lotes en campo, hornos de secado y despalillo, hasta la fermentación perfecta en pilones.
+                </p>
+
+                <!-- Botones de Acción Rápida con tus rutas de recursos -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="{{ route('lots_receptions.index') }}" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center space-x-2">
+                        <span>Iniciar Recepción de Lotes</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="{{ route('pilons.index') }}" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl border border-gray-700 transition-all">
+                        Ver Pilones
+                    </a>
+                </div>
             </div>
-            <div class="border-b border-gray-700/60 pb-4">
-                <span class="block text-4xl font-black text-teal-300 drop-shadow">100%</span>
-                <span class="text-xs font-semibold text-gray-300 uppercase tracking-widest">Trazabilidad en Planta</span>
+
+            <!-- Panel de Estadísticas / Estado del Sistema (Columna Derecha) -->
+            <div class="lg:col-span-5">
+                <div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-8 shadow-2xl backdrop-blur-xl space-y-8 relative">
+                    <!-- Efecto brillo superior -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent"></div>
+
+                    <!-- Módulos CRUD Activos -->
+                    <div class="text-center space-y-1">
+                        <span class="text-4xl sm:text-5xl font-black text-emerald-400 tracking-tight">22</span>
+                        <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">MÓDULOS CRUD ACTIVOS</p>
+                    </div>
+
+                    <!-- Divisor -->
+                    <div class="h-px bg-gray-800 w-full"></div>
+
+                    <!-- Trazabilidad en Planta -->
+                    <div class="text-center space-y-1">
+                        <span class="text-4xl sm:text-5xl font-black text-white tracking-tight">100%</span>
+                        <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">TRAZABILIDAD EN PLANTA</p>
+                    </div>
+
+                    <!-- Estado del Sistema Sincronizado -->
+                    <div class="pt-2 flex justify-center">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-800/50 text-emerald-400 text-xs font-medium">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>Sistema Sincronizado</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center justify-center gap-2 text-emerald-400 text-xs font-bold bg-emerald-950/60 py-2.5 px-4 rounded-xl border border-emerald-800/40">
-                <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-                Sistema Sincronizado
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Tarjetas Interactivas de Módulos con Animación Hover -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-emerald-500 transition-all duration-300 transform hover:-translate-y-2 group">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white flex items-center justify-center text-2xl mb-5 shadow-md group-hover:rotate-6 transition-transform">
-            🌱
         </div>
-        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-2">Recepción y Lotes</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Control riguroso de productores, orígenes, fechas y libras de tabaco crudo.</p>
-        <a href="{{ route('lots_receptions.index') }}" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-2 transition-transform text-decoration-none">
-            Explorar módulo &rarr;
-        </a>
-    </div>
+    </main>
 
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-amber-500 transition-all duration-300 transform hover:-translate-y-2 group">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-2xl mb-5 shadow-md group-hover:rotate-6 transition-transform">
-            🔥
-        </div>
-        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-2">Secado y Hornos</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Monitoreo térmico, hornos, fardos de secado y cierres de procesos de curado.</p>
-        <a href="{{ route('oven_hornos.index') }}" class="inline-flex items-center gap-2 text-sm font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-2 transition-transform text-decoration-none">
-            Explorar módulo &rarr;
-        </a>
-    </div>
+    <!-- Footer -->
+    <footer class="border-t border-gray-900 bg-gray-950 py-6 text-center text-xs text-gray-500">
+        <p>&copy; {{ date('Y') }} Tabacalera Despánic. Todos los derechos reservados. Módulo de Gestión de Tabaco.</p>
+    </footer>
 
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-teal-500 transition-all duration-300 transform hover:-translate-y-2 group">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 text-white flex items-center justify-center text-2xl mb-5 shadow-md group-hover:rotate-6 transition-transform">
-            🍃
-        </div>
-        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-2">Despalillo</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Gestión detallada de venas, gavetas, preparaciones y entregas de hojas.</p>
-        <a href="{{ route('destemming_preparations.index') }}" class="inline-flex items-center gap-2 text-sm font-bold text-teal-600 dark:text-teal-400 group-hover:translate-x-2 transition-transform text-decoration-none">
-            Explorar módulo &rarr;
-        </a>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 group">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-400 to-indigo-600 text-white flex items-center justify-center text-2xl mb-5 shadow-md group-hover:rotate-6 transition-transform">
-            🏛️
-        </div>
-        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-2">Pilones y Tabaco</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Administración de pilones de fermentación, orígenes y clasificación.</p>
-        <a href="{{ route('pilons.index') }}" class="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-2 transition-transform text-decoration-none">
-            Explorar módulo &rarr;
-        </a>
-    </div>
-</div>
-@endsection
+</body>
+</html>
