@@ -32,7 +32,7 @@ class LotsReceptionController extends Controller
     public function store(LotsReceptionRequest $request)
     {
         LotsReception::create($request->validated());
-        return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha creado correctamente.");
+        return redirect()->route("lots_receptions.index")->with("success", "La recepción de lote se ha creado correctamente.");
     }
 
     /**
@@ -60,7 +60,7 @@ class LotsReceptionController extends Controller
     {
         $lotReception = LotsReception::findOrFail($id);
         $lotReception->update($request->validated());
-        return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha actualizado correctamente.");
+        return redirect()->route("lots_receptions.index")->with("success", "La recepción de lote se ha actualizado correctamente.");
     }
     
     /**
@@ -70,6 +70,6 @@ class LotsReceptionController extends Controller
     {
         $lotReception = LotsReception::findOrFail($id);
         $lotReception->delete();
-        return redirect()->route("lots_reception.index")->with("success", "La recepción de lote se ha eliminado correctamente.");
+        return redirect()->route("lots_receptions.index")->with("success", "La recepción de lote se ha eliminado correctamente.");
     }
 }

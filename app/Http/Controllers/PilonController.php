@@ -23,7 +23,7 @@ class PilonController extends Controller
     public function create()
     {
         $pilon = new Pilon();
-        return view("pilons.create", compact("pilons"));
+        return view("pilons.create", compact("pilon"));
     }
 
     /**
