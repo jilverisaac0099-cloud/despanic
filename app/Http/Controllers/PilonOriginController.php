@@ -47,7 +47,7 @@ class PilonOriginController extends Controller
      */
     public function show(PilonOrigin $pilon_origin)
     {
-        $pilon_origin = PilonOrigin::with(['lot_reception', 'pilon'])->findOrFail($pilon_origin->id);
+        $pilon_origin = PilonOrigin::with(['lots_reception', 'pilon'])->findOrFail($pilon_origin->id);
         return view('pilon_origins.show', compact('pilon_origin'));
     }
     
@@ -56,7 +56,7 @@ class PilonOriginController extends Controller
      */
     public function edit(string $id)
     {
-        $pilon_origin = PilonOrigin::with(['lot_reception', 'pilon'])->findOrFail($id);
+        $pilon_origin = PilonOrigin::with(['lots_reception', 'pilon'])->findOrFail($id);
         $lots_receptions = LotsReception::all();
         $pilons = Pilon::all();
         return view('pilon_origins.edit', compact('pilon_origin', 'lots_receptions', 'pilons'));
@@ -67,7 +67,7 @@ class PilonOriginController extends Controller
      */
     public function update(PilonOriginRequest $request, string $id): RedirectResponse
     {
-        $pilon_origin = PilonOrigin::with(['lot_reception', 'pilon'])->findOrFail($id);
+        $pilon_origin = PilonOrigin::with(['lots_reception', 'pilon'])->findOrFail($id);
         $pilon_origin->update($request->validated());
         return redirect()->route('pilon_origins.index')->with('success', 'Origen de pilón actualizado correctamente.');
     }
@@ -77,7 +77,7 @@ class PilonOriginController extends Controller
      */
     public function destroy(string $id)
     {
-        $pilon_origin = PilonOrigin::with(['lot_reception', 'pilon'])->findOrFail($id);
+        $pilon_origin = PilonOrigin::with(['lots_reception', 'pilon'])->findOrFail($id);
         $pilon_origin->delete();
         return redirect()->route('pilon_origins.index')->with('success', 'Origen de pilón eliminado correctamente.');
     }

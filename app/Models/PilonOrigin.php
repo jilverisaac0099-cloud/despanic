@@ -8,7 +8,7 @@ class PilonOrigin extends Model
 {
     protected $fillable=[
         "pounds_contributed",
-        "lot_reception_id",
+        "lots_reception_id",
         "pilon_id"
     ];
 
@@ -17,7 +17,7 @@ class PilonOrigin extends Model
         return $this->belongsTo(LotsReception::class);
     }
 
-    public function pilons()
+    public function pilon()
     {
         return $this->belongsTo(Pilon::class);
     }

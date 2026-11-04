@@ -26,7 +26,7 @@
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Lote de Recepción (Origen)</h3>
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                            {{ $pilon_origin->lots_reception->lot_number ?? $pilon_origin->lots_reception->code ?? ('Lote #' . $pilon_origin->lot_reception_id) }}
+                            {{ $pilon_origin->lots_reception->lot_number ?? $pilon_origin->lots_reception->code ?? ('Lote #' . $pilon_origin->lots_reception_id) }}
                         </span>
                     </div>
 
