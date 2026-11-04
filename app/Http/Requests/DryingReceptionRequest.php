@@ -25,8 +25,8 @@ class DryingReceptionRequest extends FormRequest
         return [
             'destemming_clousure_id' => "required",
             'date_income' => "date|required",
-            'weigth_gold' => "decimal:0,2|required||min:1|max:10",
-            'weight_damp' => "decimal:0,2|required||min:1|max:10",
+            'weigth_gold' => "decimal:0,2|required||min:1|max:10000",
+            'weight_damp' => "decimal:0,2|required||min:1|max:10000",
             'status' => "string|required||min:1|max:50",
         ];
     }
@@ -43,12 +43,12 @@ class DryingReceptionRequest extends FormRequest
             'weigth_gold.decimal' => 'El campo peso oro solo permite un máximo de 2 decimales',
             'weigth_gold.required' => 'El campo es requerido',
             'weigth_gold.min' => 'El minimo permitido es 1',
-            'weigth_gold.max' => 'El maximo permitido es 10',
+            'weigth_gold.max' => 'El maximo permitido es 10000',
 
             'weight_damp.decimal' => 'El campo peso húmedo solo permite un máximo de 2 decimales',
             'weight_damp.required' => 'El campo es requerido',
             'weight_damp.min' => 'El minimo permitido es 1',
-            'weight_damp.max' => 'El maximo permitido es 10',
+            'weight_damp.max' => 'El maximo permitido es 10000',
 
             'status.string' => 'El campo estado solo permite caracteres',
             'status.required' => 'El campo es requerido',
