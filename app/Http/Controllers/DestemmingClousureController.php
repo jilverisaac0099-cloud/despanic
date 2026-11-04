@@ -37,7 +37,7 @@ class DestemmingClousureController extends Controller
     public function store(DestemmingClousureRequest $request)
     {
         DestemmingClousure::create($request->validated());
-        return redirect()->route('destemming_clousures.index')->with('success', 'Cierre de despalillo creado correctamente.');
+        return redirect()->route('destemming_closures.index')->with('success', 'Cierre de despalillo creado correctamente.');
     }
 
     /**
@@ -66,7 +66,7 @@ class DestemmingClousureController extends Controller
     {
         $destemming_clousure = DestemmingClousure::with(['pilon'])->findOrFail($id);
         $destemming_clousure->update($request->validated());
-        return redirect()->route('destemming_clousures.index')->with('success', 'Cierre de despalillo actualizado correctamente.');
+        return redirect()->route('destemming_closures.index')->with('success', 'Cierre de despalillo actualizado correctamente.');
     }
     
     /**
@@ -76,6 +76,6 @@ class DestemmingClousureController extends Controller
     {
         $destemming_clousure = DestemmingClousure::with(['pilon'])->findOrFail($id);
         $destemming_clousure->delete();
-        return redirect()->route('destemming_clousures.index')->with('success', 'Cierre de despalillo eliminado correctamente.');
+        return redirect()->route('destemming_closures.index')->with('success', 'Cierre de despalillo eliminado correctamente.');
     }
 }
