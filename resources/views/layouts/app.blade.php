@@ -155,5 +155,37 @@
 
         @yield('content')
         {{ $slot ?? '' }}
-    </main></body></html>
-    
+
+    <!-- ========================================================= -->
+    <!-- SCRIPT GLOBAL DE SWEETALERT2 PARA BOTONES DE ELIMINAR     -->
+    <!-- ========================================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmarEliminacion(id) {
+            Swal.fire({
+                title: '¿Eliminar de forma permanente?',
+                text: "Esta acción no se puede deshacer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4f46e5',
+                cancelButtonColor: '#ef4444',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                background: '#1e293b',
+                color: '#ffffff',
+                customClass: {
+                    popup: 'rounded-2xl border border-gray-700'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-delete-' + id).submit();
+                }
+            });
+        }
+    </script>
+
+    <!-- INYECCIÓN DE SCRIPTS ADICIONALES -->
+    @stack('scripts')
+    @yield('scripts')
+</body>
+</html>

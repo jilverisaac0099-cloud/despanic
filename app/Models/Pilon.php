@@ -32,5 +32,10 @@ protected $fillable = [
     {
         return $this->hasMany(DestemmingPreparation::class);
     }
+
+        public function pilon_origins()
+    {
+        return $this->hasMany(PilonOrigin::class);
+    }
 }
 

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->decimal('pounds_contributed', 10, 2);
 
-            $table->unsignedBigInteger("lot_reception_id");
-            $table->foreign("lot_reception_id")->references("id")->on("lots_receptions")->onDelete("cascade")->onUpdate("cascade");
+            $table->unsignedBigInteger("lots_reception_id");
+            $table->foreign("lots_reception_id")->references("id")->on("lots_receptions")->onDelete("cascade")->onUpdate("cascade");
 
 
             $table->unsignedBigInteger("pilon_id");
