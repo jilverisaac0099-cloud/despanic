@@ -23,7 +23,7 @@ class PilonOriginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lot_reception_id'=>"required",
+            'lots_reception_id'=>"required",
             'pilon_id'=>"required",
             'pounds_contributed'=>"numeric|required||min:0",
         ];
@@ -33,10 +33,10 @@ class PilonOriginRequest extends FormRequest
     {
         return[
 
-            'lot_reception_id' => 'required|exists:lots_receptions,id',
+            'lots_reception_id' => 'required|exists:lots_receptions,id',
             'pilon_id' => 'required|exists:pilons,id',
 
-            'lot_reception_id.required'=>'El campo es requerido',
+            'lots_reception_id.required'=>'El campo es requerido',
 
             'pilon_id.required'=>'El campo es requerido',
 
