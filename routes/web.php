@@ -25,15 +25,13 @@ use App\Http\Controllers\TemperatureController;
 use App\Http\Controllers\TobaccoClassController;
 use App\Http\Controllers\VeinDestemmingController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Módulo de Gestión de Tabaco
-|--------------------------------------------------------------------------
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::resource('bale_compositions', BaleCompositionController::class);
 Route::resource('bale_dryings', BaleDryingController::class);
