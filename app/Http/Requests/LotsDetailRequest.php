@@ -23,33 +23,37 @@ class LotsDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lots_reception_id'=>"required",
-            'cut_number'=>"string|required||min:1|max:50",
-            'pounds'=>"numeric|required||min:0",
-            'quality'=>"string|required||min:3|max:50",
+            'lots_reception_id' => 'required|exists:lots_reception,id',
+            'cut_number'        => 'required|string|min:1|max:50',
+            'pounds'            => 'required|numeric|min:0',
+            'quality'           => 'required|string|min:3|max:50',
         ];
     }
 
-    public function messages():array
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
     {
-        return[
-            'lots_reception_id' => 'required|exists:lots_reception,id',
-            'cut_number' => 'required|string|max:50',
+        return [
+            'lots_reception_id.required' => 'El campo de recepción de lote es requerido.',
+            'lots_reception_id.exists'   => 'La recepción de lote seleccionada no es válida.',
 
-            'cut_number.string'=>'El numero de corte solo permite caracteres',
-            'cut_number.required'=>'El campo es requerido',
-            'cut_number.min'=>'El minimo de caractesres es 1',
-            'cut_number.max'=>'El maximo de caracteres es 50',
+            'cut_number.required'        => 'El campo es requerido',
+            'cut_number.string'          => 'El número de corte solo permite caracteres',
+            'cut_number.min'             => 'El mínimo de caracteres es 1',
+            'cut_number.max'             => 'El máximo de caracteres es 50',
 
-            'pounds.numeric'=>'El campo libras solo permite numeros',
-            'pounds.required'=>'El campo es requerido',
-            'pounds.min'=>'El valor minimo permitido es 0',
+            'pounds.required'            => 'El campo es requerido',
+            'pounds.numeric'             => 'El campo libras solo permite números',
+            'pounds.min'                 => 'El valor mínimo permitido es 0',
 
-            'quality.string'=>'El campo calidad solo permite caracteres',
-            'quality.required'=>'El campo es requerido',
-            'quality.min'=>'El minimo de caractesres es 3',
-            'quality.max'=>'El maximo de caracteres es 50',
-
+            'quality.required'           => 'El campo es requerido',
+            'quality.string'             => 'El campo calidad solo permite caracteres',
+            'quality.min'                => 'El mínimo de caracteres es 3',
+            'quality.max'                => 'El máximo de caracteres es 50',
         ];
     }
 }
