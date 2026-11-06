@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('quality', 50);
 
             $table->unsignedBigInteger("lots_reception_id");
-            $table->foreign("lots_reception_id")->references("id")->on("lots_reception")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("lots_reception_id")->references("id")->on("lots_receptions")->onDelete("cascade")->onUpdate("cascade");
 
             $table->timestamps();
         });
