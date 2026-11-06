@@ -16,7 +16,7 @@ class TobaccoClass extends Model
 
     public function drawer_entrys()
     {
-        return $this->hasMany(DrawerEntry::class, 'tobacco_classes_id');
+        return $this->hasMany(DrawersEntry::class, 'tobacco_classes_id');
     }
 
     public function exit_dryings()
