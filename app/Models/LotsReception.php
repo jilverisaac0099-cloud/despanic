@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LotsReception extends Model
 {
-    protected $table = "lots_reception";
-
     protected $fillable=[
         "producer",
         "origin",

@@ -19,8 +19,8 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div class="md:col-span-2">
-                            <label for="bale_drying_id" class="block text-sm font-medium text-gray-700 mb-2">Paca (Secado) de Origen</label>
-                            <select id="bale_drying_id" name="bale_drying_id" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
+                            <label for="bale_drying_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Recepcion de Secado</label>
+                            <select id="bale_drying_id" name="bale_drying_id" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
                                 <option value="">-- Seleccione un Registro de Secado --</option>
                                 @foreach($bale_dryings as $paca)
                                     <option value="{{ $paca->id }}" {{ old('bale_drying_id') == $paca->id ? 'selected' : '' }}>

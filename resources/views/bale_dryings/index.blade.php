@@ -26,9 +26,9 @@
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            @forelse ($bale_dryings as$bale_drying)
-                                <tr class="hover:bg-gray-50 transition-colors group">
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                            @forelse ($bale_dryings as $bale_drying)
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-mono text-gray-400">{{ $bale_drying->id }}</span>
                                     </td>
