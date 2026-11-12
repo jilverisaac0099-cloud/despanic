@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destemming_deliverys', function (Blueprint $table) {
+        Schema::create('destemming_deliveries', function (Blueprint $table) {
             $table->id();
             $table->date('delivery_date');
             $table->integer('bags_delivered');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destemming_deliverys');
+        Schema::dropIfExists('destemming_deliveries');
     }
 };

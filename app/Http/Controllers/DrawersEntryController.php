@@ -18,8 +18,8 @@ class DrawersEntryController extends Controller
      */
     public function index()
     {
-        $drawers_entrys = DrawersEntry::with(['tobacco_class', 'drying_reception'])->get();
-        return view("drawers_entrys.index", compact("drawers_entrys"));
+        $drawers_entries = DrawersEntry::with(['tobacco_class', 'drying_reception'])->get();
+        return view("drawers_entries.index", compact("drawers_entries"));
     }
 
     /**
@@ -30,7 +30,7 @@ class DrawersEntryController extends Controller
         $drawers_entry = new DrawersEntry();
         $tobacco_classes = TobaccoClass::all();
         $drying_receptions = DryingReception::all();
-        return view('drawers_entrys.create', compact('drawers_entry', 'tobacco_classes', 'drying_receptions'));
+        return view('drawers_entries.create', compact('drawers_entry', 'tobacco_classes', 'drying_receptions'));
     }
 
     /**
@@ -39,7 +39,7 @@ class DrawersEntryController extends Controller
     public function store(DrawersEntryRequest $request)
     {
         DrawersEntry::create($request->validated());
-        return redirect()->route('drawers_entrys.index')->with('success', 'Entrada de gaveta creada correctamente.');
+        return redirect()->route('drawers_entries.index')->with('success', 'Entrada de gaveta creada correctamente.');
     }
 
     /**
@@ -48,7 +48,7 @@ class DrawersEntryController extends Controller
     public function show(DrawersEntry $drawers_entry)
     {
         $drawers_entry = DrawersEntry::with(['tobacco_class', 'drying_reception'])->findOrFail($drawers_entry->id);
-        return view('drawers_entrys.show', compact('drawers_entry'));
+        return view('drawers_entries.show', compact('drawers_entry'));
     }
     
     /**
@@ -59,7 +59,7 @@ class DrawersEntryController extends Controller
         $drawers_entry = DrawersEntry::with(['tobacco_class', 'drying_reception'])->findOrFail($id);
         $tobacco_classes = TobaccoClass::all();
         $drying_receptions = DryingReception::all();
-        return view('drawers_entrys.edit', compact('drawers_entry', 'tobacco_classes', 'drying_receptions'));
+        return view('drawers_entries.edit', compact('drawers_entry', 'tobacco_classes', 'drying_receptions'));
     }
 
     /**
@@ -69,7 +69,7 @@ class DrawersEntryController extends Controller
     {
         $drawers_entry = DrawersEntry::with(['tobacco_class', 'drying_reception'])->findOrFail($id);
         $drawers_entry->update($request->validated());
-        return redirect()->route('drawers_entrys.index')->with('success', 'Entrada de gaveta actualizada correctamente.');
+        return redirect()->route('drawers_entries.index')->with('success', 'Entrada de gaveta actualizada correctamente.');
     }
     
     /**
@@ -79,6 +79,6 @@ class DrawersEntryController extends Controller
     {
         $drawers_entry = DrawersEntry::with(['tobacco_class', 'drying_reception'])->findOrFail($id);
         $drawers_entry->delete();
-        return redirect()->route('drawers_entrys.index')->with('success', 'Entrada de gaveta eliminada correctamente.');
+        return redirect()->route('drawers_entries.index')->with('success', 'Entrada de gaveta eliminada correctamente.');
     }
 }

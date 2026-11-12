@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('registration_date');
 
             $table->unsignedBigInteger("destemming_delivery_id");
-            $table->foreign("destemming_delivery_id")->references("id")->on("destemming_deliverys")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("destemming_delivery_id")->references("id")->on("destemming_deliveries")->onDelete("cascade")->onUpdate("cascade");
 
         $table->unsignedBigInteger("tobacco_classes_id");
         $table->foreign("tobacco_classes_id")->references("id")->on("tobacco_classes")->onDelete("cascade")->onUpdate("cascade");
