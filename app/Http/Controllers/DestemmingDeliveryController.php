@@ -18,8 +18,8 @@ class DestemmingDeliveryController extends Controller
      */
     public function index()
     {
-        $destemming_deliverys = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->get();
-        return view("destemming_deliverys.index", compact("destemming_deliverys"));
+        $destemming_deliveries = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->get();
+        return view("destemming_deliveries.index", compact("destemming_deliveries"));
     }
 
     /**
@@ -30,7 +30,7 @@ class DestemmingDeliveryController extends Controller
         $destemming_delivery = new DestemmingDelivery();
         $destemming_preparations = DestemmingPreparation::all();
         $pilons = Pilon::all();
-        return view('destemming_deliverys.create', compact('destemming_delivery', 'destemming_preparations', 'pilons'));
+        return view('destemming_deliveries.create', compact('destemming_delivery', 'destemming_preparations', 'pilons'));
     }
 
     /**
@@ -39,7 +39,7 @@ class DestemmingDeliveryController extends Controller
     public function store(DestemmingDeliveryRequest $request)
     {
         DestemmingDelivery::create($request->validated());
-        return redirect()->route('destemming_deliverys.index')->with('success', 'Entrega de despalillo creada correctamente.');
+        return redirect()->route('destemming_deliveries.index')->with('success', 'Entrega de despalillo creada correctamente.');
     }
 
     /**
@@ -48,7 +48,7 @@ class DestemmingDeliveryController extends Controller
     public function show(DestemmingDelivery $destemming_delivery)
     {
         $destemming_delivery = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->findOrFail($destemming_delivery->id);
-        return view('destemming_deliverys.show', compact('destemming_delivery'));
+        return view('destemming_deliveries.show', compact('destemming_delivery'));
     }
     
     /**
@@ -59,7 +59,7 @@ class DestemmingDeliveryController extends Controller
         $destemming_delivery = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->findOrFail($id);
         $destemming_preparations = DestemmingPreparation::all();
         $pilons = Pilon::all();
-        return view('destemming_deliverys.edit', compact('destemming_delivery', 'destemming_preparations', 'pilons'));
+        return view('destemming_deliveries.edit', compact('destemming_delivery', 'destemming_preparations', 'pilons'));
     }
 
     /**
@@ -69,7 +69,7 @@ class DestemmingDeliveryController extends Controller
     {
         $destemming_delivery = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->findOrFail($id);
         $destemming_delivery->update($request->validated());
-        return redirect()->route('destemming_deliverys.index')->with('success', 'Entrega de despalillo actualizada correctamente.');
+        return redirect()->route('destemming_deliveries.index')->with('success', 'Entrega de despalillo actualizada correctamente.');
     }
     
     /**
@@ -79,6 +79,6 @@ class DestemmingDeliveryController extends Controller
     {
         $destemming_delivery = DestemmingDelivery::with(['destemming_preparation', 'pilon'])->findOrFail($id);
         $destemming_delivery->delete();
-        return redirect()->route('destemming_deliverys.index')->with('success', 'Entrega de despalillo eliminada correctamente.');
+        return redirect()->route('destemming_deliveries.index')->with('success', 'Entrega de despalillo eliminada correctamente.');
     }
 }

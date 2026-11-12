@@ -23,7 +23,7 @@ class LotsDetailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lots_reception_id' => 'required|exists:lots_reception,id',
+            'lots_reception_id' => 'required|exists:lots_receptions,id',
             'cut_number'        => 'required|string|min:1|max:50',
             'pounds'            => 'required|numeric|min:0',
             'quality'           => 'required|string|min:3|max:50',
