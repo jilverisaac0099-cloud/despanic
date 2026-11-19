@@ -27,12 +27,10 @@ use App\Http\Controllers\TobaccoClassController;
 use App\Http\Controllers\VeinDestemmingController;
 use App\Http\Middleware\CheckRole;
 
-// 1. La raíz redirige al login
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// RUTA PARA CREAR AUTOMÁTICAMENTE LOS 6 USUARIOS Y ROLES DE LA FÁBRICA
 Route::get('/crear-usuarios', function () {
     app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -76,34 +74,21 @@ Route::get('/crear-usuarios', function () {
             </div>';
 });
 
-// 2. Grupo general autenticado
 Route::middleware(['auth', 'verified'])->group(function () {
     
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    // Rutas de perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // ==========================================
-    // ÁREA 1: RECEPCIÓN DE MATERIA PRIMA
-    // ==========================================
     Route::middleware([CheckRole::class . ':Administrador General,Encargado Recepcion'])->group(function () {
-  Route::get('/reception-menu', function () {
+        Route::get('/reception-menu', function () {
             return view('receptions.menu');
         })->name('receptions.menu');
-
 
         Route::resource('lots_receptions', LotsReceptionController::class);
         Route::resource('lots_details', LotsDetailController::class);
     });
 
-    // ==========================================
-    // ÁREA 2: PILONES / FERMENTACIÓN
-    // ==========================================
     Route::middleware([CheckRole::class . ':Administrador General,Encargado Pilones'])->group(function () {
         Route::get('/pilons-menu', function () {
             return view('menu.pilons');
@@ -115,9 +100,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('temperatures', TemperatureController::class);
     });
 
-    // ==========================================
-    // ÁREA 3: DESPALILLO
-    // ==========================================
     Route::middleware([CheckRole::class . ':Administrador General,Encargado Despalillo'])->group(function () {
         Route::get('/destemmings-menu', function () {
             return view('menu.destemmings');
@@ -133,9 +115,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('destemming_closures', DestemmingClousureController::class);
     });
 
-    // ==========================================
-    // ÁREA 4: SECADERO
-    // ==========================================
     Route::middleware([CheckRole::class . ':Administrador General,Encargado Secadero'])->group(function () {
         Route::get('/dryings-menu', function () {
             return view('menu.dryings');
@@ -148,9 +127,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('drying_closures', DryingClosureController::class);
     });
 
-    // ==========================================
-    // ÁREA 5: PACAS
-    // ==========================================
     Route::middleware([CheckRole::class . ':Administrador General,Encargado Pacas'])->group(function () {
         Route::get('/bales-menu', function () {
             return view('menu.bales');
@@ -161,13 +137,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('bale_packagings', BalePackagingController::class);
     });
 
-  Route::get('/dashboard', function () {
-    $actividades = \App\Models\Actividad::latest()->take(5)->get();
-    return view('dashboard', compact('actividades'));
-})->middleware(['auth', 'verified'])->name('dashboard');
- });
+    Route::get('/dashboard', function () {
+        $actividades = \App\Models\Actividad::latest()->take(5)->get();
+        return view('dashboard', compact('actividades'));
+    })->name('dashboard');
+});
+Route::get('/olvide-mi-contrasena', function () {
+    return view('auth.forgot-password');
+})->name('soporte.password');
 
-// 3. Rutas de autenticación de Breeze
+
 require __DIR__.'/auth.php';
-
-
