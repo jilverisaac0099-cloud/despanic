@@ -13,7 +13,7 @@ class PilonController extends Controller
      */
     public function index()
     {
-        $pilons = Pilon::orderByDesc("id")->get();
+        $pilons = Pilon::orderByDesc("id")->paginate(10);
         return view("pilons.index", compact("pilons"));
     }
 
